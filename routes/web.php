@@ -26,4 +26,12 @@ Route::get('/contact', function(){
 });
 // Route::view('/contact', 'contact', ['name' => 'KYM', 'role' => 'admin']); // cara simpel jika hanya untuk menampilkan halaman
 
-Route::redirect('/contact', '/contact-us'); // untuk ketika halaman /contact di akses akan melempar ke halaman /contact-us
+// Route::redirect('/contact', '/contact-us'); // untuk ketika halaman /contact di akses akan melempar ke halaman /contact-us
+
+Route::get('/product', function(){
+    return "product";
+});
+
+Route::get('/product/{id}', function($id){
+    return view('product.detail', ['id' => $id]);
+});
