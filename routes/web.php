@@ -22,5 +22,6 @@ Route::get('/test', function() {
 });
 
 Route::get('/contact', function(){
-    return view('contact');
+    return view('contact', ['name' => 'KYM', 'role' => 'admin']);
 });
+// Route::view('/contact', 'contact', ['name' => 'KYM', 'role' => 'admin']); // cara simpel jika hanya untuk menampilkan halaman

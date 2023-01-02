@@ -7,6 +7,6 @@
     <title>Contact</title>
 </head>
 <body>
-    <h1>Ini adalah halaman contact</h1>
+    <h1>Ini adalah halaman contact milik {{ $name; }} selaku {{ $role; }}</h1>
 </body>
 </html>
