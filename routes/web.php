@@ -35,3 +35,17 @@ Route::get('/product', function(){
 Route::get('/product/{id}', function($id){
     return view('product.detail', ['id' => $id]);
 });
+
+Route::prefix('admin')->group(function () {
+    Route::get('/profil-admin', function(){
+        return "profil admin";
+    });
+    
+    Route::get('/about-admin', function(){
+        return "about admin";
+    });
+    
+    Route::get('/contact-admin', function(){
+        return "contact admin";
+    });
+});
