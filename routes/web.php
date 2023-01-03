@@ -14,38 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test', function() {
-    return "just testing";
-});
-
-Route::get('/contact', function(){
-    return view('contact', ['name' => 'KYM', 'role' => 'admin']);
-});
-// Route::view('/contact', 'contact', ['name' => 'KYM', 'role' => 'admin']); // cara simpel jika hanya untuk menampilkan halaman
-
-// Route::redirect('/contact', '/contact-us'); // untuk ketika halaman /contact di akses akan melempar ke halaman /contact-us
-
-Route::get('/product', function(){
-    return "product";
-});
-
-Route::get('/product/{id}', function($id){
-    return view('product.detail', ['id' => $id]);
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/profil-admin', function(){
-        return "profil admin";
-    });
-    
-    Route::get('/about-admin', function(){
-        return "about admin";
-    });
-    
-    Route::get('/contact-admin', function(){
-        return "contact admin";
-    });
+    return view('home', ['name' => 'Yuda']);
 });
