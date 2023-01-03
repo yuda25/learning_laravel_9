@@ -35,13 +35,23 @@
         <h1>Ini halaman home</h1>
         <h2>welcome {{ $name; }}</h2>
         <h2>Anda {{ $role; }}</h2>
-        @if ($role == 'admin')
+        {{-- @if ($role == 'admin')
             <h2>welcome admin</h2>
         @elseif ($role == 'user')
             <h2>welcome user</h2>
         @else 
             <h2>sadarlah... anda bukan siapa"nya.</h2>
-        @endif
+        @endif --}}
+        @switch($role)
+            @case('admin')
+                <h2>anda adalah admin</h2>
+                @break
+            @case('user')
+                <h2>anda adalah user</h2>
+                @break
+            @default
+                <h2>sadarlah... anda bukan siapa"nya.</h2>
+        @endswitch
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
