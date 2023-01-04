@@ -68,3 +68,25 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 <!-- untuk get list route -->
 php artisan route:list
+
+--------------- MIGRATION ---------------
+<!-- untuk membuat migration -->
+php artisan make:migration create_students_table
+
+<!-- untuk menambah column -->
+php artisan make:migration add_gender_column_to_students_table
+
+<!-- untuk menempatkannya  -->
+->after('column_name')
+
+<!-- untuk merollback batch -->
+php artisan migrate:rollback --step=2
+
+<!-- untuk update column -->
+php artisan make:migration change_gender_attributes_in_students_table
+
+<!-- install doctrine/dbal agar bisa update column -->
+composer require doctrine/dbal
+
+<!-- relasi -->
+php artisan make:migration add_class_id_column_to_students_table
