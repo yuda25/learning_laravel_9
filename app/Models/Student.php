@@ -10,4 +10,6 @@ class Student extends Model
     use HasFactory;
 
     // protected $table = 'students'; // anotasi untuk object ke nama tabel (tidak di perlukan jika nama tabel berakhiran 's' dan nama object tidak pake 's')
+
+    protected $fillable = ['name', 'gender', 'nis', 'class_id', 'created_at', 'updated_at'];
 }
