@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with('class')->get();
+        $students = Student::with(['class', 'extracurriculars'])->get(); //with dapet dari func dalam model
         return view('students', ['allStudents' => $students]);
     }
 }
