@@ -16,6 +16,7 @@
                 <th>NIS</th>
                 <th>Class</th>
                 <th>Extracurricular</th>
+                <th>Homeroom teacher</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                             - {{ $val->name }} <br>
                         @endforeach
                     </td>
+                    <td>{{ $data->class->homeroomTeacher->name }}</td>
                 </tr>
             @endforeach
         </tbody>
