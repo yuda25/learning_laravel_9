@@ -4,25 +4,23 @@
     
 @section('body')
 <div class="container">
-    <h1>Ini halaman Students</h1>
-    {{-- <p>hallo {{ $allStudents }}</p> --}}
-    <h4>List Students</h4>
-    <table class="table">
+    <h4 class="mt-3">List Students</h4>
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>NIS</th>
-                <th>Class</th>
-                <th>Extracurricular</th>
-                <th>Homeroom teacher</th>
-            </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">NIS</th>
+            <th scope="col">Class</th>
+            <th scope="col">Extracurricular</th>
+            <th scope="col">Homeroom teacher</th>
+          </tr>
         </thead>
         <tbody>
             @foreach ($allStudents as $data)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->nis }}</td>
@@ -36,6 +34,6 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+      </table>
 </div>
 @endsection

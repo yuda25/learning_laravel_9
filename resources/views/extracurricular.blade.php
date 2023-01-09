@@ -4,20 +4,19 @@
     
 @section('body')
 <div class="container">
-    <h1>Ini halaman Extracurricular</h1>
-    <h4>List Extracurricular</h4>
-    <table class="table">
+    <h4 class="mt-3">List Extracurricular</h4>
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Anggota</th>
-            </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Anggota</th>
+          </tr>
         </thead>
         <tbody>
             @foreach ($ekskul as $data)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
                     <td>
                         @foreach ($data->students as $val)

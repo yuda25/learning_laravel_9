@@ -4,20 +4,20 @@
     
 @section('body')
 <div class="container">
-    <h1>Ini halaman class</h1>
-    <table class="table">
+    <h4 class="mt-3">List Class</h4>
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Students</th>
-                <th>Homeroom Teacher</th>
-            </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Students</th>
+            <th scope="col">Homeroom Teacher</th>
+          </tr>
         </thead>
         <tbody>
             @foreach ($allClass as $data)
                 <tr>
-                    <td>{{ $loop->iteration; }}</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
                     <td>
                         @foreach ($data->students as $students)
@@ -28,6 +28,6 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+      </table>
 </div>
 @endsection

@@ -4,19 +4,18 @@
     
 @section('body')
 <div class="container">
-    <h1>Ini halaman teacher</h1>
-    <h4>List Teachers</h4>
-    <table class="table">
+    <h4 class="mt-3">List Teachers</h4>
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-            </tr>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+          </tr>
         </thead>
         <tbody>
             @foreach ($allTeachers as $data)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
                 </tr>
             @endforeach

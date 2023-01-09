@@ -26,9 +26,6 @@ Route::get('/', function(){
 });
 
 Route::get('/students', [StudentController::class, 'index']);
-
 Route::get('/class', [ClassController::class, 'index']);
-
 Route::get('/extracurricular', [ExtracurricularController::class, 'index']);
-
 Route::get('/teacher', [TeacherController::class, 'index']);
