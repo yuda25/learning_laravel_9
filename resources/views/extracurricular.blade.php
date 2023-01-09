@@ -10,7 +10,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Anggota</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -18,11 +18,7 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
-                    <td>
-                        @foreach ($data->students as $val)
-                            - {{ $val->name }} <br>
-                        @endforeach
-                    </td>
+                    <td><a href="/extracurricular-detail/{{$data->id}}" class="btn btn-success btn-sm">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>

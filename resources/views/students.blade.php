@@ -12,9 +12,7 @@
             <th scope="col">Name</th>
             <th scope="col">Gender</th>
             <th scope="col">NIS</th>
-            <th scope="col">Class</th>
-            <th scope="col">Extracurricular</th>
-            <th scope="col">Homeroom teacher</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -24,13 +22,7 @@
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->nis }}</td>
-                    <td>{{ $data->class['name'] }}</td>
-                    <td>
-                        @foreach ($data->extracurriculars as $val)
-                            - {{ $val->name }} <br>
-                        @endforeach
-                    </td>
-                    <td>{{ $data->class->homeroomTeacher->name }}</td>
+                    <td><a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>

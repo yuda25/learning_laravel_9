@@ -10,8 +10,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Students</th>
-            <th scope="col">Homeroom Teacher</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -19,12 +18,7 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
-                    <td>
-                        @foreach ($data->students as $students)
-                            - {{ $students['name'] }} <br>
-                        @endforeach
-                    </td>
-                    <td>{{ $data->homeroomTeacher->name }}</td>
+                    <td><a href="/class-detail/{{$data->id}}" class="btn btn-success btn-sm">Detail</a></td>
                 </tr>
             @endforeach
         </tbody>
