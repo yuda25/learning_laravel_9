@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\ClassRoom;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
@@ -18,5 +19,26 @@ class StudentController extends Controller
     {
         $student = Student::with(['class.homeroomTeacher', 'extracurriculars'])->findOrFail($id);
         return view('student-detail', ['student' => $student]);
+    }
+
+    public function create()
+    {   
+        $class = ClassRoom::select('id', 'name')->get();
+        return view('student-add', ['class' => $class]);
+    }
+
+    public function store(Request $request)
+    {
+        // cara biasa
+        // $student = new Student;
+        // $student->name = $request->name;
+        // $student->gender = $request->gender;
+        // $student->nis = $request->nis;
+        // $student->class_id = $request->class_id;
+        // $student->save();
+
+        // cara mas assignment {name pada form harus sama dengan column dan di modal nya di beri fillable}
+        $student = Student::create($request->all());
+        return redirect('/students');
     }
 }

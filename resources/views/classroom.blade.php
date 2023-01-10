@@ -4,7 +4,10 @@
     
 @section('body')
 <div class="container">
-    <h4 class="mt-3">List Class</h4>
+  <div class="d-flex justify-content-between mt-3">
+    <h4>List Class</h4>
+    <a href="" class="btn btn-success">Add</a>
+  </div>
     <table class="table table-striped">
         <thead>
           <tr>
