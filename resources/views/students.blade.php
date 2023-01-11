@@ -4,6 +4,11 @@
     
 @section('body')
 <div class="container">
+  @if (Session::has('status'))
+    <div class="alert alert-success mt-3" role="alert">
+      {{ Session::get('message') }}
+    </div>
+  @endif
   <div class="d-flex justify-content-between mt-3">
     <h4>List Students</h4>
     <a href="/student-add" class="btn btn-success">Add</a>
