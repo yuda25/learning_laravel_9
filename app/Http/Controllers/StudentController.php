@@ -7,6 +7,7 @@ use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\StudentCreateRequest;
 
 class StudentController extends Controller
 {
@@ -28,7 +29,7 @@ class StudentController extends Controller
         return view('student-add', ['class' => $class]);
     }
 
-    public function store(Request $request)
+    public function store(StudentCreateRequest $request)
     {
         // cara biasa
         // $student = new Student;
@@ -39,6 +40,7 @@ class StudentController extends Controller
         // $student->save();
 
         // cara mas assignment {name pada form harus sama dengan column dan di modal nya di beri fillable}
+
         $student = Student::create($request->all());
 
         if ($student) {

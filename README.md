@@ -92,3 +92,6 @@ composer require doctrine/dbal
 
 <!-- relasi -->
 php artisan make:migration add_class_id_column_to_students_table
+
+--------------- buat validasi ---------------
+php artisan make:request StudentCreateRequest
