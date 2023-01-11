@@ -71,4 +71,20 @@ class StudentController extends Controller
         $student->update($request->all());
         return redirect('/students');
     }
+
+    public function delete($id)
+    {
+        // pake qb
+        // $del = DB::table('students')->where('id', $id)->delete();
+
+        // pake eorm
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        if ($student) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'data deleted successfully');
+        }
+        return redirect('/students');
+    }
 }

@@ -33,8 +33,7 @@
                     <td>
                       <a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
                       <a href="/student-edit/{{$data->id}}" class="btn btn-info btn-sm">Edit</a>
-                    </td>
-                </tr>
+                      <a href="student-delete/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin di hapus?')">Delete</a>
             @endforeach
         </tbody>
       </table>
