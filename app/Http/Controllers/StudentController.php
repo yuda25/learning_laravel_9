@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::all();
+        $students = Student::Paginate(15);
         return view('students', ['allStudents' => $students]);
     }
 
