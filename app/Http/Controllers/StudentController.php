@@ -87,4 +87,34 @@ class StudentController extends Controller
         }
         return redirect('/students');
     }
+
+    public function softDelete()
+    {
+        $student = Student::onlyTrashed()->get();
+        return view('students-deleted', ['students' => $student]);
+    }
+
+    public function restore($id)
+    {
+        $restore = Student::withTrashed()->where('id', $id)->restore();
+
+        if ($restore) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'data restored successfully');
+        }
+
+        return redirect('/students-deleted');
+    }
+
+    public function hardDelete($id)
+    {
+        $delete = Student::withTrashed()->where('id', $id)->forceDelete();
+
+        if ($delete) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'data Permanent deleted successfully');
+        }
+
+        return redirect('/students-deleted');
+    }
 }

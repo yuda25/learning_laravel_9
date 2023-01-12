@@ -1,6 +1,6 @@
 @extends('layouts.bootstrap')
 
-@section('title', 'Students')
+@section('title', 'Students-deleted')
     
 @section('body')
 <div class="container">
@@ -10,10 +10,8 @@
     </div>
   @endif
   <div class="d-flex justify-content-between mt-3">
-    <h4>List Students</h4>
+    <h4>List Students Deleted</h4>
     <div>
-      <a href="/student-add" class="btn btn-success">Add</a>
-      <a href="/students-deleted" class="btn btn-info">Trash</a>
     </div>
   </div>
     <table class="table table-striped">
@@ -27,16 +25,15 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($allStudents as $data)
+            @foreach ($students as $data)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->nis }}</td>
                     <td>
-                      <a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
-                      <a href="/student-edit/{{$data->id}}" class="btn btn-info btn-sm">Edit</a>
-                      <a href="student-delete/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin di hapus?')">Delete</a>
+                      <a href="/students/{{$data->id}}/restore" class="btn btn-success btn-sm" onclick="return confirm('yakin data dengan nama {{ $data->name }} ingin di restore?')">Restore</a>
+                      <a href="/students-hard-delete/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin di hapus?')">Hard Delete</a>
             @endforeach
         </tbody>
       </table>
