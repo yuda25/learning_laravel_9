@@ -11,9 +11,16 @@
   @endif
   <div class="d-flex justify-content-between mt-3">
     <h4>List Students</h4>
+    <form action="" method="GET">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="keyword" placeholder="Search Here">
+          <button class="input-group-text btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </form>
     <div>
       <a href="/student-add" class="btn btn-success">Add</a>
       <a href="/students-deleted" class="btn btn-info">Trash</a>
+
     </div>
   </div>
     <table class="table table-striped">
@@ -23,6 +30,7 @@
             <th scope="col">Name</th>
             <th scope="col">Gender</th>
             <th scope="col">NIS</th>
+            <th scope="col">Class</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -33,6 +41,7 @@
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->nis }}</td>
+                    <td>{{ $data->class->name }}</td>
                     <td>
                       <a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
                       <a href="/student-edit/{{$data->id}}" class="btn btn-info btn-sm">Edit</a>
@@ -41,7 +50,7 @@
         </tbody>
       </table>
       <div>
-        {{$allStudents->links()}}
+        {{$allStudents->withQueryString()->links()}}
       </div>
     </div>
 @endsection
