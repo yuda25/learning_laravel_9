@@ -5,7 +5,7 @@
 @section('body')
 <div class="mt-3 col-8 m-auto">
     <h4>Add Student Here</h4>
-    <form action="/student/{{ $student->id }}" method="POST">
+    <form action="/student/{{ $student->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -38,6 +38,13 @@
                     <option value="{{ $val->id }}">{{ $val->name }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="Photo" class="form-label">Profile (optional)</label>
+            <div>
+                <input class="form-control" type="file" id="Photo" name="photo">
+            </div>
         </div>
 
         <div class="mb-3">

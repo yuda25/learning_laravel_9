@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
@@ -40,16 +41,14 @@ class StudentController extends Controller
 
     public function store(StudentCreateRequest $request)
     {
-        // cara biasa
-        // $student = new Student;
-        // $student->name = $request->name;
-        // $student->gender = $request->gender;
-        // $student->nis = $request->nis;
-        // $student->class_id = $request->class_id;
-        // $student->save();
-
-        // cara mas assignment {name pada form harus sama dengan column dan di modal nya di beri fillable}
-
+        $fileName = null;
+        if($request->file('photo')) {
+            $format = $request->file('photo')->getClientOriginalExtension();
+            $now = Carbon::now()->setTimezone('Asia/Jakarta');
+            $fileName = strtok($request->name, " ").'-'.$now->format('YmdHis').'.'.$format;
+            $request->file('photo')->storeAs('profile', $fileName);
+        }
+        $request['image'] = $fileName;
         $student = Student::create($request->all());
 
         if ($student) {
@@ -70,23 +69,25 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::findOrFail($id);
-        // $student->name = $request->name;
-        // $student->gender = $request->gender;
-        // $student->nis = $request->nis;
-        // $student->class_id = $request->class_id;
-        // $student->save();
-
-        // cara mas assignment
+        $fileName = null;
+        if($request->file('photo')) {
+            $format = $request->file('photo')->getClientOriginalExtension();
+            $now = Carbon::now()->setTimezone('Asia/Jakarta');
+            $fileName = strtok($request->name, " ").'-'.$now->format('YmdHis').'.'.$format;
+            $request->file('photo')->storeAs('profile', $fileName);
+        }
+        $request['image'] = $fileName;
         $student->update($request->all());
+
+        if ($student) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'update student successfully');
+        }
         return redirect('/students');
     }
 
     public function delete($id)
     {
-        // pake qb
-        // $del = DB::table('students')->where('id', $id)->delete();
-
-        // pake eorm
         $student = Student::findOrFail($id);
         $student->delete();
 

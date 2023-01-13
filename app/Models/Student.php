@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Student extends Model
 {
 
-    protected $fillable = ['name', 'gender', 'nis', 'class_id'];
+    protected $fillable = ['name', 'gender', 'nis', 'class_id', 'image'];
 
     use HasFactory, SoftDeletes;
     

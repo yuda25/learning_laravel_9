@@ -71,6 +71,10 @@ eager load > lazy load
 <!-- untuk get list route -->
 php artisan route:list
 
+
+<!-- untuk menghubugkan dari storage ke public agar bisa di akses -->
+php artisan storage:link
+
 --------------- MIGRATION ---------------
 <!-- untuk membuat migration -->
 php artisan make:migration create_students_table

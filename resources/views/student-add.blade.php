@@ -14,7 +14,7 @@
         </div>
     @endif
     <h4>Add Student Here</h4>
-    <form action="student" method="POST">
+    <form action="student" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name">Name</label>
@@ -43,6 +43,13 @@
                     <option value="{{$val->id}}">{{$val->name}}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="Photo" class="form-label">Profile (optional)</label>
+            <div>
+                <input class="form-control" type="file" id="Photo" name="photo">
+            </div>
         </div>
 
         <div class="mb-3">
