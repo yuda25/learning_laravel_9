@@ -8,6 +8,7 @@ use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StudentCreateRequest;
 
 class StudentController extends Controller
@@ -69,14 +70,24 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::findOrFail($id);
+        $oldProfile = $student->image;
+        $filePath = 'profile/'.$oldProfile;
         $fileName = null;
         if($request->file('photo')) {
             $format = $request->file('photo')->getClientOriginalExtension();
             $now = Carbon::now()->setTimezone('Asia/Jakarta');
             $fileName = strtok($request->name, " ").'-'.$now->format('YmdHis').'.'.$format;
             $request->file('photo')->storeAs('profile', $fileName);
+            $request['image'] = $fileName;
+
+            if (Storage::exists($filePath)) {
+                Storage::delete($filePath);
+            } else {
+                dd('file gk ada!');
+            }
+        } else {
+            $request['image'] = $oldProfile;
         }
-        $request['image'] = $fileName;
         $student->update($request->all());
 
         if ($student) {
