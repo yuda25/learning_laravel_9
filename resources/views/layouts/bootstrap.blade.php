@@ -33,6 +33,11 @@
                         <a class="nav-link {{ Request::is('teacher') ? 'active' : '' }}" href="/teacher">Teacher</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item text-light">
+                        <a class="nav-link" href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
