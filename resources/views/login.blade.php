@@ -9,8 +9,12 @@
   <body>
       <div class="vh-100 d-flex justify-content-center align-items-center flex-column">
           <form class="border" method="POST" action="" style="width: 500px; padding: 20px"> 
-            @if (Session::has('status'))
+            @if (Session::get('status') == 'failed')
               <div class="alert alert-danger mt-3 " role="alert">
+                {{ Session::get('message') }}
+              </div>
+            @elseif(Session::get('status') == 'success')
+              <div class="alert alert-success mt-3 " role="alert">
                 {{ Session::get('message') }}
               </div>
             @endif
