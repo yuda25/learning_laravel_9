@@ -32,8 +32,10 @@
                     <td>{{ $data->gender }}</td>
                     <td>{{ $data->nis }}</td>
                     <td>
+                      @if (Auth::user()->role->name == 'Admin')
                       <a href="/students/{{$data->id}}/restore" class="btn btn-success btn-sm" onclick="return confirm('yakin data dengan nama {{ $data->name }} ingin di restore?')">Restore</a>
                       <a href="/students-hard-delete/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin di hapus?')">Hard Delete</a>
+                      @endif
             @endforeach
         </tbody>
       </table>

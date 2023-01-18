@@ -18,9 +18,14 @@
       </div>
     </form>
     <div>
+      @if (Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Teacher')
+        -
+      @else
       <a href="/student-add" class="btn btn-success">Add</a>
+      @endif
+      @if (Auth::user()->role->name == 'Admin')
       <a href="/students-deleted" class="btn btn-info">Trash</a>
-
+      @endif
     </div>
   </div>
     <table class="table table-striped">
@@ -43,9 +48,15 @@
                     <td>{{ $data->nis }}</td>
                     <td>{{ $data->class->name }}</td>
                     <td>
-                      <a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
-                      <a href="/student-edit/{{$data->id}}" class="btn btn-info btn-sm">Edit</a>
+                      @if (Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Teacher')
+                        -
+                      @else
+                        <a href="/student/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
+                        <a href="/student-edit/{{$data->id}}" class="btn btn-info btn-sm">Edit</a>
+                        @endif
+                      @if (Auth::user()->role->name == 'Admin')
                       <a href="student-delete/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin di hapus?')">Delete</a>
+                      @endif
             @endforeach
         </tbody>
       </table>

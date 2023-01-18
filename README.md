@@ -102,3 +102,6 @@ php artisan make:request StudentCreateRequest
 
 <!-- kalo mau jalanuin seed -->
 php artisan db:seed --class=StudentSeeder
+
+<!-- create middleware -->
+php artisan make:middleware EnsureTokenIsValid
